@@ -1,3 +1,4 @@
+
 /*
 Author: Kshitij Lawate
 
@@ -26,7 +27,8 @@ public with sharing class SystemLog
     public static void addToLog(String uniqueId, String details)
     {
         System_Log__c sLog = fetchSystemLog(uniqueId);
-        sLog.Additional_Details__c = details;
+        sLog.Additional_Details__c = String.isEmpty(sLog.Additional_Details__c) ? 
+                            '' + details : sLog.Additional_Details__c + '\r\n' + details ;
         mapSystemLogs.put(uniqueId, sLog);
     }
 
